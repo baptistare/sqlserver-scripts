@@ -1,0 +1,3 @@
+runas /netonly /user:domain\username "c:\path\ssms.exe"
+runas /netonly /user:PANSEGUROS\beatriz.santiago.ext "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server Tools 18\ssms.exe"
+
