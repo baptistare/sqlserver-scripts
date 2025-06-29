@@ -3,19 +3,19 @@
 --sp_WhoIsActive
 --###############################################################################################################################################################################################################################
 
---exibição processos ativos
+--exibicao processos ativos
 exec master..sp_WhoIsActive;
 exec master..sp_WhoIsActive @output_column_list = '[dd hh:mm:ss.mss],[session_id],[blocking_session_id],[percent_complete],[sql_text],[login_name],[host_name],[database_name],[program_name],[wait_info],[CPU],[reads],[writes],[physical_reads],[used_memory],[tempdb_allocations],tempdb_current],[status],[open_tran_count],[percent_complete],[start_time],[login_time],[request_id],[collection_time]'
 
---exibição processos ativos e plano de execução
+--exibicao processos ativos e plano de execucao
 exec master..sp_WhoIsActive @get_plans = 1, @get_outer_command = 1
 exec master..sp_WhoIsActive @get_plans = 1, @get_outer_command = 1, @get_locks = 1, @get_additional_info = 1, @find_block_leaders = 1, @output_column_list = '[collection_time],[dd hh:mm:ss.mss],[session_id],[blocking_session_id],[blocked_session_count],[locks],[additional_info],[sql_text],[sql_command],[query_plan],[login_name],[host_name],[database_name],[program_name],[wait_info],[CPU],[reads],[writes],[physical_reads],[used_memory],[tempdb_allocations],[tempdb_current],[status],[open_tran_count],[percent_complete],[start_time],[login_time],[request_id]'
 --@delta_interval = 1
 --sp_WhoIsActive @help = 1
 
 --@delta_interval 
--- exibe informações de utilização de recursos ([cpu_delta], [reads_delta], [writes_delta], [physical_reads_delta], [used_memory_delta], [tempdb_allocations_delta], [tempdb_current_delta])
--- durante o período de tempo escolhido
+-- exibe informacoes de utilizacao de recursos ([cpu_delta], [reads_delta], [writes_delta], [physical_reads_delta], [used_memory_delta], [tempdb_allocations_delta], [tempdb_current_delta])
+-- durante o periodo de tempo escolhido
 exec master..sp_WhoIsActive @delta_interval = 1
 exec master..sp_WhoIsActive @get_plans = 1, @get_outer_command = 1, @get_locks = 1, @get_additional_info = 1, @find_block_leaders = 1, @delta_interval = 1, @output_column_list = '[collection_time],[dd hh:mm:ss.mss],[session_id],[blocking_session_id],[blocked_session_count],[locks],[additional_info],[sql_text],[sql_command],[query_plan],[login_name],[host_name],[database_name],[program_name],[wait_info],[CPU],[CPU_delta],[reads],[reads_delta],[writes],[writes_delta],[physical_reads],[physical_reads_delta],[used_memory],[used_memory_delta],[tempdb_allocations],[tempdb_allocations_delta],[tempdb_current],[tempdb_current_delta],[status],[open_tran_count],[percent_complete],[start_time],[login_time],[request_id]'
 
